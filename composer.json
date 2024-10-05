@@ -1,0 +1,18 @@
+{
+    "name": "rafaelssucupira/fpdf",
+    "description": "API do fpdf incrementada com algumas ferramentas",
+    "autoload": {
+        "psr-4": {
+            "ReportApp\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "rafaelssucupira",
+            "email": "rafaelssucupira@gmail.com"
+        }
+    ],
+    "require": {
+        "setasign/fpdf": "^1.8"
+    }
+}
