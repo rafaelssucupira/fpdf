@@ -6,10 +6,11 @@ use ReportApp\PDF_Rotate;
 use ReportApp\PDF_Sector;
 use ReportApp\PDF_Diag;   
 use ReportApp\PDF_Tag;
+use ReportApp\PDF_LineGraph;
 
 
 class PDF extends FPDF {
-    use PDF_Rotate, PDF_Sector, PDF_Diag, PDF_Tag;
+    use PDF_Rotate, PDF_Sector, PDF_Diag, PDF_Tag, PDF_LineGraph;
 
     function __construct() {
 
@@ -64,6 +65,50 @@ class PDF extends FPDF {
         $text .= " [This is a cell][and another cell]\n\n";
         $text .= "<This is a bold sentence> and another non bold sentence.";
         $this->WriteText($text);
+
+        $this->SetY(185);
+
+        $this->SetFont('Arial','',10);
+        $data = array(
+            'Group 1' => array(
+                'haha' => 2.7,
+                '08-23' => 3.0,
+                '09-13' => 3.3928571,
+                '10-04' => 3.2903226,
+                '10-25' => 3.1
+            ),
+            'Group 2' => array(
+                'haha' => 2.5,
+                '08-23' => 2.0,
+                '09-13' => 3.1785714,
+                '10-04' => 2.9677419,
+                '10-25' => 3.33333
+            )
+        );
+        $colors = array(
+            'Group 1' => array(114,171,237),
+            'Group 2' => array(163,36,153)
+        );
+
+   
+        // Display options: all (horizontal and vertical lines, 4 bounding boxes)
+        // Colors: fixed
+        // Max ordinate: 6
+        // Number of divisions: 3
+
+        // Este script permite criar gráficos baseados em linhas. O método a utilizar é o seguinte:
+
+        // LineGraph(float w, float h, dados do array [, opções de string [, cores do array [, int maxVal [, int nbDiv]]]])
+
+        // w: largura do gráfico
+        // h: altura do gráfico
+        // dados: array multidimensional contendo séries de dados
+        // options: string contendo opções de exibição
+        // cores: array multidimensional contendo cores de linha; se for nulo ou não fornecido, algumas cores aleatórias serão usadas
+        // maxVal: ordenada máxima; se 0 ou não for fornecido, é calculado automaticamente
+        // nbDiv: número de divisões verticais (valor padrão: 4)
+
+        $this->LineGraph(190,50,$data,'VHkBvBgBdB',$colors,10,4);
         
     }
 
