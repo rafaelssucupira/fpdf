@@ -1,6 +1,9 @@
 # rafaelssucupira/fpdf
 API do fpdf incrementada com algumas ferramentas com Diag, Rotate, Sector, Tag encontradas em fpdf.org
 
+# AVISO IMPORTANTE!
+É necessário adiocionar as fontes customizadas dentro de vendor/setasign/font, Ex : Tahoma e etc...
+
 ## getting started
 ```
 <?php

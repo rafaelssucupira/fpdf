@@ -1,6 +1,7 @@
 {
     "name": "rafaelssucupira/fpdf",
     "description": "API do fpdf incrementada com algumas ferramentas",
+    "license": "MIT",
     "autoload": {
         "psr-4": {
             "ReportApp\\": "src/"
