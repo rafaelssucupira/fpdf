@@ -2,15 +2,17 @@
 require_once("vendor/autoload.php");
 
 use FPDF;
+use ReportApp\PDF_Table;
 use ReportApp\PDF_Rotate;
 use ReportApp\PDF_Sector;
-use ReportApp\PDF_Diag;   
+use ReportApp\PDF_Diag;
 use ReportApp\PDF_Tag;
 use ReportApp\PDF_LineGraph;
 
 
 class PDF extends FPDF {
-    use PDF_Rotate, PDF_Sector, PDF_Diag, PDF_Tag, PDF_LineGraph;
+    use PDF_Rotate, PDF_Sector, PDF_Diag, PDF_Tag, PDF_LineGraph, PDF_Table;
+    
 
     function __construct() {
 
@@ -91,31 +93,23 @@ class PDF extends FPDF {
         );
 
    
-        // Display options: all (horizontal and vertical lines, 4 bounding boxes)
-        // Colors: fixed
-        // Max ordinate: 6
-        // Number of divisions: 3
-
-        // Este script permite criar gráficos baseados em linhas. O método a utilizar é o seguinte:
-
-        // LineGraph(float w, float h, dados do array [, opções de string [, cores do array [, int maxVal [, int nbDiv]]]])
-
-        // w: largura do gráfico
-        // h: altura do gráfico
-        // dados: array multidimensional contendo séries de dados
-        // options: string contendo opções de exibição
-        // cores: array multidimensional contendo cores de linha; se for nulo ou não fornecido, algumas cores aleatórias serão usadas
-        // maxVal: ordenada máxima; se 0 ou não for fornecido, é calculado automaticamente
-        // nbDiv: número de divisões verticais (valor padrão: 4)
-
         $this->LineGraph(190,50,$data,'VHkBvBgBdB',$colors,10,4);
+
+        // $this->addPage();
+        $this->SetY(222);
         
+        $this->SetWidths(array(30, 50, 30, 40));
+        for($i=0;$i<5;$i++){
+            $this->Row(array("GenerateSentence()"," GenerateSentence()", "GenerateSentence()", "GenerateSentence()"));
+        }
+
     }
 
 }
 
 $pdf = new PDF();
 $pdf->AddPage();
+
 $pdf->Output();
 
 ?>

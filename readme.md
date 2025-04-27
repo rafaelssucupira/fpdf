@@ -1,10 +1,17 @@
 # rafaelssucupira/fpdf
 API do fpdf incrementada com algumas ferramentas com Diag, Rotate, Sector, Tag encontradas em fpdf.org
 
-# AVISO IMPORTANTE!
-É necessário adiocionar as fontes customizadas dentro de vendor/setasign/font, Ex : Tahoma e etc...
+> [!IMPORTANT]
+> É necessário adiocionar as fontes customizadas dentro de vendor/setasign/font, Ex : Tahoma e etc...
 
-## getting started
+# Traits implementados
+- [x] PDF_Rotate
+- [x] PDF_Sector
+- [x] PDF_Diag
+- [x] PDF_Tag
+- [x] PDF_Table
+
+# Exemplo
 ```
 <?php
 require_once("vendor/autoload.php");
